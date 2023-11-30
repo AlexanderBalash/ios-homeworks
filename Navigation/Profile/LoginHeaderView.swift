@@ -24,6 +24,7 @@ class LoginHeaderView: UIView {
         userName.layer.borderWidth = 0.5
         userName.layer.borderColor = UIColor.lightGray.cgColor
         userName.layer.cornerRadius = 10
+        userName.resignFirstResponder()
         
         return userName
     }()
@@ -40,17 +41,20 @@ class LoginHeaderView: UIView {
         password.layer.borderWidth = 0.5
         password.layer.borderColor = UIColor.lightGray.cgColor
         password.layer.cornerRadius = 10
+        password.resignFirstResponder()
         
         return password
     }()
     
     private lazy var button: UIButton = {
         let button = UIButton()
-        button.setBackgroundImage( UIImage(named: "blue_pixel"), for: button.state)
+        button.backgroundImage(for: button.state)
+        button.backgroundColor = UIColor(named: "Color")
+        button.layer.cornerRadius = 10
         button.setTitle("Log in", for: .normal)
         button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.layer.cornerRadius = 50
         
         return button
     }()
@@ -59,13 +63,13 @@ class LoginHeaderView: UIView {
         super.init(frame: LoginHeaderView.accessibilityFrame())
         backgroundColor = .white
         setupConstraint()
+        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
- 
-
+    
     private func setupConstraint() {
         self.addSubview(logoView)
         self.addSubview(userNameTextField)
@@ -78,7 +82,7 @@ class LoginHeaderView: UIView {
             self.logoView.centerXAnchor.constraint(equalTo: centerXAnchor),
             self.logoView.topAnchor.constraint(equalTo: topAnchor, constant: 120),
             
-            self.userNameTextField.topAnchor.constraint(equalTo: logoView.topAnchor, constant: 120),
+            self.userNameTextField.topAnchor.constraint(equalTo: logoView.topAnchor, constant: 220),
             self.userNameTextField.heightAnchor.constraint(equalToConstant: 50),
             self.userNameTextField.centerXAnchor.constraint(equalTo: centerXAnchor),
             self.userNameTextField.leftAnchor.constraint(equalTo: leftAnchor, constant: 16),
@@ -87,15 +91,16 @@ class LoginHeaderView: UIView {
             self.passwordTextField.heightAnchor.constraint(equalToConstant: 50),
             self.passwordTextField.centerXAnchor.constraint(equalTo: centerXAnchor),
             self.passwordTextField.leftAnchor.constraint(equalTo: leftAnchor, constant: 16),
-        
+            
             self.button.topAnchor.constraint(equalTo: passwordTextField.topAnchor, constant: 66),
             self.button.heightAnchor.constraint(equalToConstant: 50),
             self.button.centerXAnchor.constraint(equalTo: centerXAnchor),
             self.button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             self.button.topAnchor.constraint(equalTo: logoView.topAnchor, constant: 236),
-            
-
-            ])
+        ])
+    }
+    @objc  func buttonPressed() {
+        print(userNameTextField.text ?? "My post")
     }
 }
 
