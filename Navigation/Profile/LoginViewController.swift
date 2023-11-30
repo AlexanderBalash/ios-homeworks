@@ -2,7 +2,8 @@
 import Foundation
 import UIKit
 
-class LogInViewController: UIViewController {
+class LoginViewController: UIViewController {
+    
     
     let loginViewController = LoginHeaderView()
     

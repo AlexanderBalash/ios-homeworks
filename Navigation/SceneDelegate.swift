@@ -22,8 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         feedViewController.title = "Лента"
         feedViewController.view.backgroundColor = .systemIndigo
         
-        let profileViewController = LogInViewController ()
-        profileViewController.title = "Мой профиль"
+        let profileViewController = LoginViewController ()
+        profileViewController.title = "My profile"
         
         let postViewController = PostViewController()
         postViewController.title = "Мой пост"
@@ -42,6 +42,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             UINavigationController(rootViewController: $0)
         }
         tabBarViewController.selectedIndex = 0
+        
         
         
         window.rootViewController = tabBarViewController
