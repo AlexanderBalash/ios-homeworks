@@ -15,7 +15,6 @@ class ProfileViewController: UIViewController {
     
     private func setupConstraint() {
         self.view.addSubview(self.profileViewController)
-        view.backgroundColor = .systemCyan
         let safeAreaGuide = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([self.profileViewController.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0),

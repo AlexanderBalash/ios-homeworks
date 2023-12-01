@@ -1,4 +1,3 @@
-
 import Foundation
 import UIKit
 
@@ -9,6 +8,7 @@ class LoginHeaderView: UIView {
         let imageView = UIImageView(image: UIImage(named: "logo"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.clipsToBounds = true
+        
         return imageView
     }()
     
@@ -19,11 +19,12 @@ class LoginHeaderView: UIView {
         userName.textColor = .black
         userName.font = UIFont.boldSystemFont(ofSize: 16)
         userName.autocapitalizationType = .none
-        //tintColor
-        userName.text = " Email or phone "
+        userName.textColor = .systemGray3
+        userName.text = "   Email or phone "
         userName.layer.borderWidth = 0.5
         userName.layer.borderColor = UIColor.lightGray.cgColor
         userName.layer.cornerRadius = 10
+        userName.resignFirstResponder()
         userName.resignFirstResponder()
         
         return userName
@@ -36,11 +37,12 @@ class LoginHeaderView: UIView {
         password.textColor = .black
         password.font = UIFont.boldSystemFont(ofSize: 16)
         password.autocapitalizationType = .none
-        //tintColor
-        password.text = " Password "
+        password.textColor = .systemGray3
+        password.text = "   Password "
         password.layer.borderWidth = 0.5
         password.layer.borderColor = UIColor.lightGray.cgColor
         password.layer.cornerRadius = 10
+        password.resignFirstResponder()
         password.resignFirstResponder()
         
         return password
@@ -48,7 +50,6 @@ class LoginHeaderView: UIView {
     
     private lazy var button: UIButton = {
         let button = UIButton()
-        button.backgroundImage(for: button.state)
         button.backgroundColor = UIColor(named: "Color")
         button.layer.cornerRadius = 10
         button.setTitle("Log in", for: .normal)
@@ -61,16 +62,15 @@ class LoginHeaderView: UIView {
     
     init() {
         super.init(frame: LoginHeaderView.accessibilityFrame())
-        backgroundColor = .white
         setupConstraint()
-        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupConstraint() {
+    func setupConstraint() {
+        
         self.addSubview(logoView)
         self.addSubview(userNameTextField)
         self.addSubview(passwordTextField)
@@ -95,13 +95,17 @@ class LoginHeaderView: UIView {
             self.button.topAnchor.constraint(equalTo: passwordTextField.topAnchor, constant: 66),
             self.button.heightAnchor.constraint(equalToConstant: 50),
             self.button.centerXAnchor.constraint(equalTo: centerXAnchor),
-            self.button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            self.button.topAnchor.constraint(equalTo: logoView.topAnchor, constant: 236),
+            self.button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16)
+            
         ])
     }
-    @objc  func buttonPressed() {
-        print(userNameTextField.text ?? "My post")
+    // Не понимаю, почему при нажатии кнопки, я не могу перейти на экран профиля...Пробовал по-разному...A также почему на симуляторе одно отображение, а на моём устройстве другое...
+    @objc func buttonPressed() {
+        let profileViewController = ProfileViewController()
+        
     }
 }
+
+
 
 

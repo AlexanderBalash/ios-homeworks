@@ -4,7 +4,7 @@ class ProfileHeaderView: UIView {
     
     
     private lazy var avatarImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "profilePhoto"))
+        let imageView = UIImageView(image: UIImage(named: "Photo"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.borderColor = UIColor.white.cgColor
         imageView.layer.borderWidth = 3
@@ -47,7 +47,7 @@ class ProfileHeaderView: UIView {
         statusProfile.backgroundColor = .white
         statusProfile.textColor = .black
         statusProfile.font = UIFont.boldSystemFont(ofSize: 15)
-        statusProfile.text = "Life is good!"
+        statusProfile.text = "   Life is good!"
         statusProfile.layer.borderWidth = 1
         statusProfile.layer.borderColor = UIColor.black.cgColor
         statusProfile.layer.cornerRadius = 12
@@ -67,7 +67,6 @@ class ProfileHeaderView: UIView {
     
     init() {
         super.init(frame: ProfileHeaderView.accessibilityFrame())
-        backgroundColor = .lightGray
         setupConstraint()
         buttonPressed()
     }
@@ -77,6 +76,7 @@ class ProfileHeaderView: UIView {
     }
     
     private func setupConstraint() {
+        
         self.addSubview(avatarImageView)
         self.addSubview(self.setStatusButton)
         self.addSubview(self.fullNameLabel)
@@ -108,7 +108,7 @@ class ProfileHeaderView: UIView {
             self.statusLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -70)])
     }
     
-    @objc  func buttonPressed() {
+    @objc private func buttonPressed() {
         print(statusTextField.text ?? "My post")
     }
 }

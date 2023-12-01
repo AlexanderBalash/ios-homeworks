@@ -19,7 +19,7 @@
 		512500C02AC4985300F959E3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512500BF2AC4985300F959E3 /* ProfileViewController.swift */; };
 		515A784D2B1521CF00A47B5A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 515A784C2B1521CF00A47B5A /* Assets.xcassets */; };
 		516A63F02B15122C00C7B0C1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516A63EF2B15122C00C7B0C1 /* LoginViewController.swift */; };
-		516A63F22B15166000C7B0C1 /* LoginHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516A63F12B15166000C7B0C1 /* LoginHeaderView.swift */; };
+		51B3057B2B1A39C300449532 /* LoginHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B3057A2B1A39C300449532 /* LoginHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +37,7 @@
 		512500BF2AC4985300F959E3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		515A784C2B1521CF00A47B5A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../Downloads/time/time/Assets.xcassets; sourceTree = "<group>"; };
 		516A63EF2B15122C00C7B0C1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		516A63F12B15166000C7B0C1 /* LoginHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginHeaderView.swift; sourceTree = "<group>"; };
+		51B3057A2B1A39C300449532 /* LoginHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +90,7 @@
 			children = (
 				512500BD2AC4983900F959E3 /* ProfileHeaderView.swift */,
 				512500BF2AC4985300F959E3 /* ProfileViewController.swift */,
-				516A63F12B15166000C7B0C1 /* LoginHeaderView.swift */,
+				51B3057A2B1A39C300449532 /* LoginHeaderView.swift */,
 				516A63EF2B15122C00C7B0C1 /* LoginViewController.swift */,
 			);
 			path = Profile;
@@ -169,7 +169,7 @@
 				512500B12AC4966600F959E3 /* PostViewController.swift in Sources */,
 				512500A02AC495C500F959E3 /* ViewController.swift in Sources */,
 				512500B42AC496B600F959E3 /* FeedViewController.swift in Sources */,
-				516A63F22B15166000C7B0C1 /* LoginHeaderView.swift in Sources */,
+				51B3057B2B1A39C300449532 /* LoginHeaderView.swift in Sources */,
 				5125009C2AC495C500F959E3 /* AppDelegate.swift in Sources */,
 				512500B92AC4975B00F959E3 /* InfoViewController.swift in Sources */,
 				512500BB2AC497BE00F959E3 /* Post.swift in Sources */,
