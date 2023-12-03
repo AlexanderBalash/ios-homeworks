@@ -5,7 +5,7 @@ import UIKit
 class LoginViewController: UIViewController {
     
     private lazy var logoView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "logo"))
+        let imageView = UIImageView(image: UIImage(named: "Logo"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.clipsToBounds = true
         
