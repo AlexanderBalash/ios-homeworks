@@ -6,10 +6,14 @@ class ProfileHeaderView: UIView {
     private lazy var avatarImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "Photo"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.layer.borderColor = UIColor.white.cgColor
+        imageView.layer.borderColor = UIColor.lightGray.cgColor
         imageView.layer.borderWidth = 3
         imageView.layer.cornerRadius = 100
         imageView.clipsToBounds = true
+        imageView.layer.shadowOffset.width = 4
+        imageView.layer.shadowOffset.height = 4
+        imageView.layer.shadowRadius = 4
+        imageView.layer.shadowOpacity = 0.7
         
         return imageView
     }()
@@ -77,10 +81,10 @@ class ProfileHeaderView: UIView {
     
     private func setupConstraint() {
         
-        self.addSubview(avatarImageView)
+        self.addSubview(self.avatarImageView)
         self.addSubview(self.setStatusButton)
         self.addSubview(self.fullNameLabel)
-        self.addSubview(statusTextField)
+        self.addSubview(self.statusTextField)
         self.addSubview(self.statusLabel)
         
         NSLayoutConstraint.activate([

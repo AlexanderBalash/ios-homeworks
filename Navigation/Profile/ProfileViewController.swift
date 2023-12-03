@@ -9,6 +9,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         self.view = ProfileHeaderView()
         let view = ProfileHeaderView()
+        view.backgroundColor = .white
         view.translatesAutoresizingMaskIntoConstraints = false
         setupConstraint()
     }
