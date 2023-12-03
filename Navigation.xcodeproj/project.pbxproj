@@ -18,7 +18,7 @@
 		512500BE2AC4983900F959E3 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512500BD2AC4983900F959E3 /* ProfileHeaderView.swift */; };
 		512500C02AC4985300F959E3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512500BF2AC4985300F959E3 /* ProfileViewController.swift */; };
 		516A63F02B15122C00C7B0C1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516A63EF2B15122C00C7B0C1 /* LoginViewController.swift */; };
-		516C14CE2B1CCCA4005B7A20 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 516C14CD2B1CCCA4005B7A20 /* Media.xcassets */; };
+		516C14CE2B1CCCA4005B7A20 /* Aseents.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 516C14CD2B1CCCA4005B7A20 /* Aseents.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +35,7 @@
 		512500BD2AC4983900F959E3 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		512500BF2AC4985300F959E3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		516A63EF2B15122C00C7B0C1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		516C14CD2B1CCCA4005B7A20 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		516C14CD2B1CCCA4005B7A20 /* Aseents.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Aseents.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +72,7 @@
 				5125009B2AC495C500F959E3 /* AppDelegate.swift */,
 				5125009D2AC495C500F959E3 /* SceneDelegate.swift */,
 				5125009F2AC495C500F959E3 /* ViewController.swift */,
-				516C14CD2B1CCCA4005B7A20 /* Media.xcassets */,
+				516C14CD2B1CCCA4005B7A20 /* Aseents.xcassets */,
 				512500A62AC495C600F959E3 /* LaunchScreen.storyboard */,
 				512500A92AC495C600F959E3 /* Info.plist */,
 				512500BA2AC497BE00F959E3 /* Post.swift */,
@@ -151,7 +151,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				516C14CE2B1CCCA4005B7A20 /* Media.xcassets in Resources */,
+				516C14CE2B1CCCA4005B7A20 /* Aseents.xcassets in Resources */,
 				512500A82AC495C600F959E3 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -77,7 +77,6 @@ class LoginViewController: UIViewController {
     }
     
     func setupConstraint() {
-        
         view.addSubview(logoView)
         view.addSubview(userNameTextField)
         view.addSubview(passwordTextField)
