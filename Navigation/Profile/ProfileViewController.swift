@@ -9,13 +9,13 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         self.view = ProfileHeaderView()
         let view = ProfileHeaderView()
+        view.backgroundColor = .white
         view.translatesAutoresizingMaskIntoConstraints = false
         setupConstraint()
     }
     
     private func setupConstraint() {
         self.view.addSubview(self.profileViewController)
-        view.backgroundColor = .systemCyan
         let safeAreaGuide = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([self.profileViewController.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0),
