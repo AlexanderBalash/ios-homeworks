@@ -8,8 +8,8 @@ class FeedViewController: UIViewController {
     
     private lazy var button: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .systemBlue
-        button.layer.cornerRadius = 4
+        button.backgroundColor = UIColor(named: "Color")
+        button.layer.cornerRadius = 10
         button.setTitle("Перейти на пост", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)

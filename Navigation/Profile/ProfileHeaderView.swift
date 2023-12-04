@@ -8,7 +8,7 @@ class ProfileHeaderView: UIView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.borderColor = UIColor.lightGray.cgColor
         imageView.layer.borderWidth = 3
-        imageView.layer.cornerRadius = 100
+        imageView.layer.cornerRadius = 75
         imageView.clipsToBounds = true
         imageView.layer.shadowOffset.width = 4
         imageView.layer.shadowOffset.height = 4
@@ -20,8 +20,8 @@ class ProfileHeaderView: UIView {
     
     private lazy var setStatusButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .systemBlue
-        button.layer.cornerRadius = 4
+        button.backgroundColor = UIColor(named: "Color")
+        button.layer.cornerRadius = 10
         button.setTitle("Set status", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
@@ -90,26 +90,26 @@ class ProfileHeaderView: UIView {
         NSLayoutConstraint.activate([
             self.avatarImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20),
             self.avatarImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 100),
-            self.avatarImageView.heightAnchor.constraint(equalToConstant: 200),
-            self.avatarImageView.widthAnchor.constraint(equalToConstant: 200),
+            self.avatarImageView.heightAnchor.constraint(equalToConstant: 150),
+            self.avatarImageView.widthAnchor.constraint(equalToConstant: 150),
             
             self.setStatusButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20),
             self.setStatusButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 320),
             self.setStatusButton.heightAnchor.constraint(equalToConstant: 50),
             self.setStatusButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20),
             
-            self.fullNameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 100),
+            self.fullNameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 88),
             self.fullNameLabel.heightAnchor.constraint(equalToConstant: 50),
             self.fullNameLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20),
             
-            self.statusTextField.topAnchor.constraint(equalTo: self.topAnchor, constant: 200),
+            self.statusTextField.topAnchor.constraint(equalTo: self.topAnchor, constant: 210),
             self.statusTextField.heightAnchor.constraint(equalToConstant: 40),
             self.statusTextField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20),
-            self.statusTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 235),
+            self.statusTextField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 215),
             
             self.statusLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 160),
             self.statusLabel.heightAnchor.constraint(equalToConstant: 50),
-            self.statusLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -70)])
+            self.statusLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -90)])
     }
     
     @objc private func buttonPressed() {
