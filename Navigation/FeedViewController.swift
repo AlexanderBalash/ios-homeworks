@@ -1,10 +1,6 @@
 import UIKit
 
 class FeedViewController: UIViewController {
-    var post: Post = {
-        var post = Post(title: "Мой пост")
-        return post
-    }()
     
     private lazy var button: UIButton = {
         let button = UIButton()

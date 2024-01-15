@@ -51,6 +51,7 @@ class ProfileHeaderView: UIView {
         statusProfile.backgroundColor = .white
         statusProfile.textColor = .black
         statusProfile.font = UIFont.boldSystemFont(ofSize: 15)
+        statusProfile.placeholder = "Add status"
         statusProfile.text = "   Life is good!"
         statusProfile.layer.borderWidth = 1
         statusProfile.layer.borderColor = UIColor.black.cgColor
@@ -86,6 +87,7 @@ class ProfileHeaderView: UIView {
         self.addSubview(self.fullNameLabel)
         self.addSubview(self.statusTextField)
         self.addSubview(self.statusLabel)
+        self.addSubview(UITableView(frame: .zero, style: .plain))
         
         NSLayoutConstraint.activate([
             self.avatarImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20),

@@ -5,6 +5,7 @@ import SwiftUI
 
 class LoginViewController: UIViewController {
     
+// Описание  логотипа
     private lazy var logoView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "Logo"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -13,6 +14,7 @@ class LoginViewController: UIViewController {
         return imageView
     }()
     
+// Описание кнопки
     private lazy var button: UIButton = {
         let button = UIButton()
         button.backgroundColor = UIColor(named: "Color")
@@ -28,57 +30,53 @@ class LoginViewController: UIViewController {
         
         return button
     }()
+// Описание свойств никнейма
+    private lazy var userNameTextField: UITextField = {
+        let userName = UITextField()
+        userName.translatesAutoresizingMaskIntoConstraints = false
+        userName.backgroundColor = .systemGray6
+        userName.textColor = .black
+        userName.font = UIFont.boldSystemFont(ofSize: 16)
+        userName.autocapitalizationType = .none
+        userName.placeholder = "Email or phone"
+        userName.layer.cornerRadius = 10
+        userName.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: userName.frame.height))
+        userName.leftViewMode = .always
+        userName.resignFirstResponder()
+        
+        return userName
+    }()
+// Описание свойств полосы между никнемом и паролем
+    private  var uiView: UIView {
+        let uiView = UIView()
+        uiView.translatesAutoresizingMaskIntoConstraints = false
+        uiView.layer.borderColor = UIColor.black.cgColor
+        uiView.backgroundColor = .lightGray
+        
+        return uiView
+    }
+// Описание поля для пароля
+    private lazy var passwordTextField: UITextField = {
+        let password = UITextField()
+        password.translatesAutoresizingMaskIntoConstraints = false
+        password.backgroundColor = .systemGray6
+        password.textColor = .black
+        password.font = UIFont.boldSystemFont(ofSize: 16)
+        password.autocapitalizationType = .none
+        password.placeholder = "Password"
+        password.tintColor = .color
+        password.isSecureTextEntry = true
+        password.layer.cornerRadius = 10
+        password.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: password.frame.height))
+        password.leftViewMode = .always
+        password.resignFirstResponder()
+        
+        return password
+    }()
     
-    let stackView: UIStackView = {
-        
-        lazy var stackView = UIStackView()
-        
-        var userNameTextField: UITextField = {
-            let userName = UITextField()
-            userName.translatesAutoresizingMaskIntoConstraints = false
-            userName.backgroundColor = .systemGray6
-            userName.textColor = .black
-            userName.font = UIFont.boldSystemFont(ofSize: 16)
-            userName.autocapitalizationType = .none
-            userName.placeholder = "Email or phone"
-            userName.layer.cornerRadius = 10
-            userName.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: userName.frame.height))
-            userName.leftViewMode = .always
-            userName.resignFirstResponder()
-            
-            return userName
-        }()
-        
-        var uiView: UIView {
-            let uiView = UIView()
-            uiView.translatesAutoresizingMaskIntoConstraints = false
-            uiView.layer.borderColor = UIColor.black.cgColor
-            uiView.backgroundColor = .lightGray
-            
-            return uiView
-        }
-        
-        var passwordTextField: UITextField = {
-            let password = UITextField()
-            password.translatesAutoresizingMaskIntoConstraints = false
-            password.backgroundColor = .systemGray6
-            password.textColor = .black
-            password.font = UIFont.boldSystemFont(ofSize: 16)
-            password.autocapitalizationType = .none
-            password.placeholder = "Password"
-            password.tintColor = .color
-            password.isSecureTextEntry = true
-            password.layer.cornerRadius = 10
-            password.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: password.frame.height))
-            password.leftViewMode = .always
-            password.resignFirstResponder()
-            
-            return password
-        }()
-        
-        stackView.addArrangedSubview(userNameTextField)
-        stackView.addArrangedSubview(uiView)
-        stackView.addArrangedSubview(passwordTextField)
+// Описание свойств стека
+    private lazy var stackView: UIStackView = {
+        var stackView = UIStackView()
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.layer.borderWidth = 0.5
@@ -87,17 +85,15 @@ class LoginViewController: UIViewController {
         stackView.layer.cornerRadius = 10
         stackView.axis = .vertical
         
-        NSLayoutConstraint.activate([
-            userNameTextField.heightAnchor.constraint(equalToConstant: 50),
-            passwordTextField.heightAnchor.constraint(equalToConstant: 50)])
-        
         return stackView
     }()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        stackView.addArrangedSubview(userNameTextField)
+        stackView.addArrangedSubview(uiView)
+        stackView.addArrangedSubview(passwordTextField)
         view.addSubview(stackView)
         view.addSubview(logoView)
         view.addSubview(button)
@@ -110,12 +106,16 @@ class LoginViewController: UIViewController {
         }
     }
     
+// Установка constraint
     func setupConstraint() {
         NSLayoutConstraint.activate([
             logoView.heightAnchor.constraint(equalToConstant: 100),
             logoView.widthAnchor.constraint(equalToConstant: 100),
             logoView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             logoView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 120),
+            
+            userNameTextField.heightAnchor.constraint(equalToConstant: 50),
+            passwordTextField.heightAnchor.constraint(equalToConstant: 50),
             
             stackView.topAnchor.constraint(equalTo: self.logoView.topAnchor, constant: 220),
             stackView.heightAnchor.constraint(equalToConstant: 100.5),
@@ -129,13 +129,13 @@ class LoginViewController: UIViewController {
         ])
     }
     
-    
     @objc func buttonPressed() {
         let profileViewController = ProfileViewController()
         profileViewController.view.backgroundColor = .systemBackground
         self.navigationController?.pushViewController(profileViewController, animated: true)
     }
 }
+
 
 
 
