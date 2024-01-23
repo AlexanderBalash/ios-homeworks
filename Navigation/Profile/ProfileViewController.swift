@@ -1,70 +1,87 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    struct PostFeed {
-    //MARK: -  Описание свойств
-        var author: String
-        var description: String
-        var image: String
-        var likes: Int
-        var views: Int
-    }
-    //MARK: - Создание массива
-    static func make() -> [PostFeed] {
-        [
-            PostFeed(author: "Nikita Glytay", description: "Если вы давно этого хотели, то начало года — самое время сделать шаг.", image: "NikitaGlytay", likes: 24353, views: 3453534),
-            PostFeed(author: "Misha Osipchuk", description: "Люди, которые достаточно сумасшедшие, чтобы думать, что они могут изменить мир — это те, кто действительно на это способен", image: "MishaOsipchuk", likes: 23423, views: 23423453),
-            PostFeed(author: "Vlad Ulasovec", description: "Изменения – закон жизни. И те, кто смотрит только в прошлое или только на настоящее, бесспорно, пропустят будущее", image: "VladUlasovec", likes: 324324, views: 234234),
-            PostFeed(author: "Alexander Balash", description: "Даже в самой худшей судьбе есть возможности для счастливых перемен.", image: "AlexanderBalash", likes: 242342354, views: 23423423)
-        ]
-    }
-    
-    var postTableView = UITableView()
-    let identefire = "MyCell"
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        createTable()
-        
-        
-    }
-    private func createTable() {
-        self.postTableView = UITableView(frame: .zero, style: .plain)
-        postTableView.register(UITableView.self, forCellReuseIdentifier: identefire)
-        
-        self.postTableView.delegate = self
-        self.postTableView.dataSource = self
-        
-        postTableView.autoresizingMask = [.flexibleWidth,.flexibleHeight]
-        
-        view.addSubview(postTableView)
-    }
-    //MARK: - UITableViewDataSource
-    internal func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
+class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return 4
-        default:
-            break
-        }
-        return 0
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = postTableView.dequeueReusableCell(withIdentifier: identefire, for: indexPath)
-    //MARK: - Завис...
-        cell.contentView = PostFeed.init(author: <#T##String#>, description: <#T##String#>, image: <#T##String#>, likes: <#T##Int#>, views: <#T##Int#>)
-        return cell
-    }
-    //MARK: - UITableViewDelegate
-    internal func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 10.0
+        return UITableViewCell.init()
     }
     
+    fileprivate let data = PostFeed.make()
+    
+    private var tableView: UITableView {
+        let tableView = UITableView.init(frame: .zero, style: .plain)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return tableView
+    }
+    private enum CellReuseID: String {
+        case base = "BaseTableVieCell_ReuseID"
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupView()
+        addSubView()
+        setupConstraint()
+        tuneTableView()
+        
+    }
+    
+    private func setupView() {
+        view.backgroundColor = .systemBackground
+        navigationItem.title = "TableView example"
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    private func addSubView() {
+        view.addSubview(tableView)
+    }
+    
+    private func setupConstraint() {
+        let safeAreaGuide = view.safeAreaLayoutGuide
+        
+        NSLayoutConstraint.activate([
+            tableView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor),
+            tableView.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor),
+        ])
+    }
+    
+    private func tuneTableView() {
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 44.0
+        
+        let headerView = TableHeaderView(title: "Лента новостей")
+        tableView.tableFooterView = UIView()
+        
+        tableView.register(
+            BaseTableViewCell.self,
+            forCellReuseIdentifier: CellReuseID.base.rawValue)
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+    }
 }
+    
+extension ViewController: UITableViewDataSource {
+    
+        
+    func numberOfRowsInSection(in tableView: UITableView) -> Int { 1 }
+        
+    func tableView( _ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { 4 }
+    
+    func tableView (_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {return UITableViewCell.init(style: .default, reuseIdentifier: "Hello world!") }
+        
+    }
+
+extension ViewController: UITableViewDelegate {}
+    
+
+    
+        
+
+

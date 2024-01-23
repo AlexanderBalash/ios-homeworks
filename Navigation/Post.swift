@@ -7,4 +7,10 @@
 
 import Foundation
 import UIKit
-
+struct Post {
+    var title: String
+    
+    init(title: String) {
+        self.title = title
+    }
+}
