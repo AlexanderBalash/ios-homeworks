@@ -11,14 +11,13 @@ import UIKit
 struct PostFeed: Identifiable {
         
     //MARK: -  Описание свойств
-    var id: Int
+        var id: Int
         var author: String
         var description: String
         var image: String
         var likes: Int
         var views: Int
-    }
-    extension PostFeed {
+    
         static func make() -> [PostFeed] {
             [
                 PostFeed(id: 1, author: "Alexander Balash", description: "Изменения – закон жизни. И те, кто смотрит только в прошлое или только на настоящее, бесспорно, пропустят будущее.", image: "AlexanderBalash", likes: 223289094, views: 238774234),
@@ -28,7 +27,7 @@ struct PostFeed: Identifiable {
                     ]
         }
     }
-    
+     
 
 
 
