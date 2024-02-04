@@ -13,7 +13,6 @@ class TableHeaderView: UIView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        
         label.font = UIFont.preferredFont(forTextStyle: .title3)
         
         return label

@@ -62,7 +62,7 @@ class BaseTableViewCell: UITableViewCell {
         
         selectionStyle = .gray
         let selectedView = UIView()
-        selectedView.backgroundColor = .systemYellow
+        selectedView.backgroundColor = .systemBlue
         selectedBackgroundView = selectedView
     }
     
@@ -71,5 +71,6 @@ class BaseTableViewCell: UITableViewCell {
     func update(_ model: PostFeed) {
         textLabel?.text = model.author
         detailTextLabel?.text = model.description
+        
     }
 }

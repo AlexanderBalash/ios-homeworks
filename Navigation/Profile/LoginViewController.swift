@@ -131,7 +131,6 @@ class LoginViewController: UIViewController {
     
     @objc func buttonPressed() {
         let profileViewController = ProfileViewController()
-        profileViewController.view.backgroundColor = .systemBackground
         self.navigationController?.pushViewController(profileViewController, animated: true)
     }
 }
