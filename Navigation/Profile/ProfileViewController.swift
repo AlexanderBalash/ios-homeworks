@@ -1,26 +1,95 @@
-
+import Foundation
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController  {
     
-    let profileViewController = ProfileHeaderView()
+    fileprivate let data = PostFeed.make()
+    static let headerIdent = "header"
+    
+    private var tableView: UITableView = {
+        let tableView = UITableView.init(
+            frame: .zero,
+            style: .plain
+        )
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        
+        
+        return tableView
+    }()
+    
+    private enum CellReuseID: String {
+        case custom = "CustomViewCell_ReuseID"
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view = ProfileHeaderView()
-        let view = ProfileHeaderView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        setupConstraint()
+        view.addSubview(ProfileView())
+        view.addSubview(tableView)
+        setupConstraints()
+        tuneTableView()
+        
+        
+        view.backgroundColor = .systemBackground
     }
     
-    private func setupConstraint() {
-        self.view.addSubview(self.profileViewController)
-        view.backgroundColor = .systemCyan
-        let safeAreaGuide = view.safeAreaLayoutGuide
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        NSLayoutConstraint.activate([self.profileViewController.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0),
-                                     self.profileViewController.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0),
-                                     self.profileViewController.heightAnchor.constraint(equalToConstant: 220),
-                                     self.profileViewController.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor)])
+        tableView.indexPathsForSelectedRows?.forEach{ indexPath in
+            tableView.deselectRow(
+                at: indexPath,
+                animated: animated
+            )
+        }
+    }
+    
+    
+    func setupConstraints() {
+        let safeAreaLayoutGuide = view.safeAreaLayoutGuide
+        
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+        ])
+    }
+    private func tuneTableView() {
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 60.0
+        tableView.tableFooterView = UIView()
+        tableView.register(
+                   PostTableViewCell.self,
+            forCellReuseIdentifier: CellReuseID.custom.rawValue
+        )
+        tableView.dataSource = self
+        tableView.delegate = self
     }
 }
+
+extension ProfileViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        data.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellReuseID.custom.rawValue, for: indexPath) as? PostTableViewCell else { fatalError("Error") }
+    
+        cell.configPost(data: data[indexPath.row])
+        
+        return cell
+    }
+}
+
+extension ProfileViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let tableHeaderView = ProfileView.init(title: "Профиль")
+        return tableHeaderView
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 250
+    }
+    
+}
+

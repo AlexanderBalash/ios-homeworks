@@ -20,10 +20,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let feedViewController = FeedViewController()
         feedViewController.title = "Лента"
-        feedViewController.view.backgroundColor = .systemIndigo
+        feedViewController.view.backgroundColor = .white
         
-        let profileViewController = LogInViewController ()
-        profileViewController.title = "Мой профиль"
+        let profileViewController = ProfileViewController()
+        profileViewController.title = "My profile"
+        profileViewController.view.backgroundColor = .systemGray4
         
         let postViewController = PostViewController()
         postViewController.title = "Мой пост"
@@ -32,16 +33,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let tabBarViewController = UITabBarController()
         tabBarViewController.view.backgroundColor = .systemTeal
         
-        feedViewController.tabBarItem = UITabBarItem(title: "Лента", image: UIImage(systemName: "house.fill"),tag: 0)
+        let loginViewController = LoginViewController()
+        loginViewController.view.backgroundColor = .white
         
-        profileViewController.tabBarItem = UITabBarItem(title: "Профиль", image:UIImage(systemName: "person.crop.circle.fill") , tag: 1)
-        postViewController.tabBarItem = UITabBarItem (title: "Добавить пост", image:UIImage(systemName: "pencil.tip.crop.circle.badge.plus") , tag: 2)
         
-        let controllers = [feedViewController,profileViewController]
+        feedViewController.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(systemName: "house.fill"),tag: 0)
+        loginViewController.tabBarItem = UITabBarItem(title: "Profile", image:UIImage(systemName: "person.crop.circle.fill") , tag: 1)
+        
+        let controllers = [feedViewController, loginViewController]
         tabBarViewController.viewControllers = controllers.map {
             UINavigationController(rootViewController: $0)
+
         }
         tabBarViewController.selectedIndex = 0
+        
+        
         
         
         window.rootViewController = tabBarViewController
@@ -49,7 +55,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         self.window =  window
     }
-    
     
     func sceneDidDisconnect(_ scene: UIScene) {
         
